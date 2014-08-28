@@ -21,6 +21,7 @@ public class MoveToPlatform : MonoBehaviour {
 		RaycastHit info;
 		if (Physics.Raycast (ray, out info)) {
 			Debug.DrawRay(info.transform.position,info.normal);
+			transform.position = info.point;
 		}
 
 	}
