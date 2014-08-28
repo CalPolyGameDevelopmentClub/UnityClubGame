@@ -73,7 +73,9 @@ public class PlayerController : MonoBehaviour {
 			RaycastHit? possiblePlatform = 
 				CastRayToPlatform(Camera.main.ScreenPointToRay(screenpoint));
 			if(possiblePlatform.HasValue){
-				var forward = Vector3.Cross (transform.right,possiblePlatform.Value.normal);
+				Vector3 forward = Vector3.Cross (transform.right,possiblePlatform.Value.normal);
+				if(Vector3.Dot(transform.up,possiblePlatform.Value.normal) <  -0.95)
+					forward = -forward;
 				playerTarg = 
 					Quaternion.LookRotation(forward, possiblePlatform.Value.normal);
 				StartCoroutine("lerpToPlatform",
