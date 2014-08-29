@@ -67,8 +67,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void HandleSnapToPlatform(){
 		if (Input.GetMouseButtonDown(0)) {
-			Vector3 screenpoint = Input.mousePosition;
-			Debug.DrawRay(transform.position, Camera.main.ScreenToWorldPoint(screenpoint));
+			Vector3 screenpoint = new Vector3(Screen.width/2, Screen.height/2, 0);
 
 			RaycastHit? possiblePlatform = 
 				CastRayToPlatform(Camera.main.ScreenPointToRay(screenpoint));
